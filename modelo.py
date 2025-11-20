@@ -5,15 +5,11 @@ Se importan:
 - torch: Para operaciones con tensores y manejo de GPU.
 - AutoProcessor, AutoModelForImageTextToText de transformers: Para cargar el modelo y procesador de Hugging Face.
 - Image de PIL (Pillow): Para el manejo de imágenes.
-- gradio: Para la construcción de la interfaz de usuario.
 - time: Para medir el tiempo de procesamiento.
 - traceback: Para obtener información detallada de errores.
 """
 import torch
 from transformers import AutoProcessor, AutoModelForImageTextToText
-from PIL import Image
-import gradio as gr
-import time
 import os
 from dotenv import load_dotenv
 import traceback
