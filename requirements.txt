@@ -1,7 +1,6 @@
 torch
 transformers
 Pillow
-gradio
 dotenv
 huggingface_hub
 requests
