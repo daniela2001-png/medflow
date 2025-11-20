@@ -20,8 +20,10 @@ from huggingface_hub import login
 load_dotenv()
 
 hf_token = os.getenv("HF_TOKEN")
-
+if not hf_token:
+    raise RuntimeError("No se encontró HF_TOKEN. Revisa tus secrets en Streamlit Cloud.")
 login(token=hf_token)
+
 
 
 
