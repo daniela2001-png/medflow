@@ -4,3 +4,5 @@ Pillow
 dotenv
 huggingface_hub
 requests
+psutil
+streamlit
