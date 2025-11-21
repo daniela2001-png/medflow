@@ -1,13 +1,3 @@
-"""
-Importa las librerías y módulos necesarios para la aplicación MedFlow.
-
-Se importan:
-- torch: Para operaciones con tensores y manejo de GPU.
-- AutoProcessor, AutoModelForImageTextToText de transformers: Para cargar el modelo y procesador de Hugging Face.
-- Image de PIL (Pillow): Para el manejo de imágenes.
-- time: Para medir el tiempo de procesamiento.
-- traceback: Para obtener información detallada de errores.
-"""
 import torch
 from transformers import AutoProcessor, AutoModelForImageTextToText
 import os
@@ -16,14 +6,13 @@ import traceback
 from huggingface_hub import login
 
 
-# Cargamos variables desde .env
 load_dotenv()
 
 hf_token = os.getenv("HF_TOKEN")
 if not hf_token:
     raise RuntimeError("No se encontró HF_TOKEN. Revisa tus secrets en Streamlit Cloud.")
-login(token=hf_token)
 
+login(token=hf_token)
 
 
 
@@ -53,13 +42,13 @@ def validate_gpu_type() -> bool:
       return False
 
 
-validate_gpu_type()
 # Validar si se ha configurado CUDA (GPU)
 is_cuda_setted = validate_gpu_type()
 # Definir el ID del modelo a utilizar de Hugging Face
 MODEL_ID = "google/medgemma-4b-it"
 # Configurar el dispositivo de procesamiento ('cuda' si hay GPU, 'cpu' en caso contrario)
 device = "cuda" if is_cuda_setted else "cpu"
+
 
 
 def init_medflow_model():
@@ -77,9 +66,11 @@ def init_medflow_model():
            Retorna (None, None) si ocurre un error durante la carga.
   """
 
-  print(f"\n🏥 Iniciando MedFlow...")
+
+
+  print("\n🏥 Iniciando MedFlow...")
   print(f"⚙️ Dispositivo: {device}")
-  print(f"📥 Descargando modelo (5-10 min primera vez)...\n")
+  print("📥 Descargando modelo (5-10 min primera vez)...\n")
 
   try:
       # Cargar el procesador asociado al modelo

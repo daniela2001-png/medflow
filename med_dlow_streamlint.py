@@ -1,6 +1,5 @@
 import streamlit as st
 from PIL import Image
-import torch
 from analizar_imagen import analizar_imagen
 from modelo import init_medflow_model, device
 
@@ -27,7 +26,6 @@ if st.button("Analizar Imagen"):
         imagen = Image.open(img_file)
         st.image(imagen, caption="Imagen subida", use_column_width=True)
         with st.spinner("Procesando análisis..."):
-            # Le PASAS processor, model, device:
             reporte, meta, status = analizar_imagen(imagen, tipo_analisis, idioma, processor, model, device)
         st.success(status)
         st.text_area("Reporte Médico", value=reporte, height=300)
@@ -38,4 +36,4 @@ else:
     st.info("Sube una imagen y presiona 'Analizar Imagen' para empezar.")
 
 st.markdown("---")
-st.markdown("Desarrollado por Yeinmy Daniela Morales - MedFlow MVP")
+st.markdown("Desarrollado por Yeinmy Daniela Morales Barrera - MedFlow MVP")

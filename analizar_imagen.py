@@ -1,10 +1,28 @@
 import time
 import traceback
+import torch
 
 def analizar_imagen(imagen, tipo_analisis, idioma, processor, model, device):
     """
     Analiza una imagen médica utilizando el modelo Med-GEMMA.
-    [ ... docstring igual ... ]
+
+    Procesa la imagen de entrada junto con un prompt basado en el tipo de análisis y idioma
+    seleccionados. Genera un reporte médico estructurado o descriptivo.
+
+    Args:
+        imagen (PIL.Image.Image): La imagen médica a analizar.
+        tipo_analisis (str, optional): El tipo de análisis a realizar.
+            Puede ser "Descripción General", "Hallazgos Patológicos",
+            "Reporte Estructurado", o "Diagnóstico Diferencial".
+            Por defecto es "Reporte Estructurado".
+        idioma (str, optional): El idioma en el que se generará el reporte.
+            Puede ser "Español" o "Inglés". Por defecto es "Español".
+
+    Returns:
+        tuple: Una tupla conteniendo:
+            - str: El reporte médico generado o un mensaje de error.
+            - str: Metadatos del procesamiento (tiempo, modelo, GPU, etc.).
+            - str: El estado del proceso (Completado, Error).
     """
     # Verificar si el modelo y procesador se cargaron correctamente
     if processor is None or model is None:
