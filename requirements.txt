@@ -1,8 +1,7 @@
-torch
-transformers
-Pillow
-dotenv
-huggingface_hub
-requests
-psutil
 streamlit
+transformers==4.50.0
+torch
+accelerate
+pillow
+python-dotenv
+huggingface_hub
