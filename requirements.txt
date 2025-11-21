@@ -6,4 +6,3 @@ huggingface_hub
 requests
 psutil
 streamlit
-accelerate
