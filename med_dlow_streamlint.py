@@ -2,6 +2,11 @@ import streamlit as st
 from PIL import Image
 from analizar_imagen import analizar_imagen
 from modelo import init_medflow_model, device
+import streamlit as st
+import psutil
+
+st.write(f"Memoria RAM disponible: {psutil.virtual_memory().available / (1024**3):.2f} GB")
+st.write(f"Memoria RAM total: {psutil.virtual_memory().total / (1024**3):.2f} GB")
 
 @st.cache_resource
 def cargar_modelo():
